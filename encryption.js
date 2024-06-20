@@ -6,7 +6,7 @@ const rl = readline.createInterface({
 });
 
 function encryptText() {
-  rl.question("\nMessage: ", (message) => {
+  rl.question("\nEnter the message you want to encrypt with a key.\n(Lowercase input will be automatically converted into uppercase.)\nMessage: ", (message) => {
     rl.question("Key: ", (key) => {
 
       // Input requirements
