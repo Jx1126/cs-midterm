@@ -1,2 +1,4 @@
 *.temp
 *.docx
+*.json
+node_modules/
