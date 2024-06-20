@@ -39,10 +39,8 @@ function decryptText() {
 decryptText();
 
 function decryptionAlgorithm(encrypted_message, key) {
-  // Converts the encrypted message and key into uppercase and splits each character into an array
-  encrypted_message = encrypted_message.toUpperCase();
+  // Splits each character into an array
   encrypted_message = encrypted_message.split("");
-  key = key.toUpperCase();
   key = key.split("");
 
   let decrypted_message = "";

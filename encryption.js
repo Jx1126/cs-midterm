@@ -9,9 +9,13 @@ function encryptText() {
   rl.question("\nMessage: ", (message) => {
     rl.question("Key: ", (key) => {
 
+      // Input requirements
+      // Only alphabets
       text_requirement = /^[a-zA-Z]+$/;
+      // Key length should be greater than or equal to the message length
       length_requirement = key.length >= message.length;
 
+      // Logs an error if the message or key does not meet the requirements
       if(!message.match(text_requirement)) {
         console.log(">> Error: '" + message + "' is invalid, please enter a message with only alphabets.");
       }
@@ -24,10 +28,14 @@ function encryptText() {
         console.log(">> Error: Invalid key, please enter a key with the equal or same length as the message.");
       }
 
+      // Encrypts the message if all the input requirements are met
       if(message.match(text_requirement) && key.match(text_requirement) && length_requirement) {
+        // Converts the message and key into uppercase
         message = message.toUpperCase();
         key = key.toUpperCase();
+        // Encrypts the message
         encrypted_message = encryptionAlgorithm(message, key);
+        // Logs the result
         console.log("\n>> Result:\n> Plain text:", message, "\n> Key:", key, "\n> Encrypted message:", encrypted_message);
       }
 
@@ -42,10 +50,8 @@ function encryptionAlgorithm(message, key) {
   // Making the key the same length as the message
   key = key.slice(0, message.length);
 
-  // Converts the message and key into uppercase and splits each character into an array
-  message = message.toUpperCase();
+  // Splits each character into an array
   message = message.split("");
-  key = key.toUpperCase();
   key = key.split("");
 
   let encrypted_message = "";
