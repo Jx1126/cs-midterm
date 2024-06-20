@@ -6,11 +6,11 @@ const rl = readline.createInterface({
 });
 
 function decryptText() {
-  rl.question("\nEncrypted message: ", (encrypted_message) => {
+  rl.question("\nEnter the message you want to decrypt with a key\nEncrypted message: ", (encrypted_message) => {
     rl.question("Key: ", (key) => {
 
       text_requirement = /^[a-zA-Z]+$/;
-      length_requirement = key.length = encrypted_message.length;
+      length_requirement = key.length >= encrypted_message.length;
 
       if(!encrypted_message.match(text_requirement)) {
         console.log(">> Error: '" + encrypted_message + "' is invalid, please enter an encrypted message with only alphabets.");
@@ -39,6 +39,9 @@ function decryptText() {
 decryptText();
 
 function decryptionAlgorithm(encrypted_message, key) {
+  // Making the key the same length as the encrypted message
+  key = key.slice(0, encrypted_message.length);
+
   // Splits each character into an array
   encrypted_message = encrypted_message.split("");
   key = key.split("");
